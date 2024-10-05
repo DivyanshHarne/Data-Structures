@@ -1,9 +1,9 @@
 public class binarySearch {
     public static void main(String[] args){
-        int[] ascArray = {-2,-6,-8,-9,10,45,49,64,78,89,110,116};
+        int[] ascArray = {2,6,8,9,10,45,49,64,78,89,110,116};
         int[] descArray = {90,75,65,43,42,39,37,33,24,12,11,10,2,-4,-15,-30};
-        int target = 65;
-        System.out.println(orderAgnosticBS(descArray, target));
+        int target = 116;
+        System.out.println(rec_BS(ascArray, target, 0, ascArray.length -1));
     }
 
     static int binSearch(int[] arr, int target){
@@ -23,6 +23,19 @@ public class binarySearch {
             }
             
         }return -1;
+    }
+    static int rec_BS(int[] arr, int target, int start, int end){
+        if(start > end) return -1;
+        int mid = start + (end-start)/2;
+
+        if(arr[mid] == target){
+            return mid;
+        }
+        else if (arr[mid] < target) {
+           return rec_BS(arr, target, mid+1, end);
+        }else{
+            return rec_BS(arr, target, start, mid-1);
+        }
     }
     static int orderAgnosticBS(int[] arr, int target){
         int start = 0;
