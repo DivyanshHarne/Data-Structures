@@ -7,9 +7,10 @@ public class palindrome {
         System.out.printf("This is string: %s \n", str);
         System.out.println(str.length());
         System.out.println(isPalindrome(str));
-
+        sc.close();
     }
     static boolean isPalindrome(String str){
+        if(str == null || str.length() == 0) return true;
         int s = 0;
         int e = str.length()-1;
         while(s<=e){
