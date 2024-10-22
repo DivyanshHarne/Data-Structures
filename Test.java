@@ -5,7 +5,7 @@ class Test {
     {
         int intArray[] = { 1, 2, 3,4,5 };
         // System.out.println(Arrays.toString(intArray));
-        System.out.println(Arrays.toString(reverse(intArray, 0, 4)));
+        // System.out.println(Arrays.toString(reverse(intArray, 0, 4)));
         // System.out.println(Arrays.toString(intArray));
     }
 
