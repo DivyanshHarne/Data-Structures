@@ -1,8 +1,9 @@
+package Sorting;
 public class binarySearch {
     public static void main(String[] args){
         int[] ascArray = {2,6,8,9,10,45,49,64,78,89,110,116};
         int[] descArray = {90,75,65,43,42,39,37,33,24,12,11,10,2,-4,-15,-30};
-        int target = 116;
+        int target = 6;
         System.out.println(rec_BS(ascArray, target, 0, ascArray.length -1));
     }
 

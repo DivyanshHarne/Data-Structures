@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <title>SPA with Authentication</title>
+  <style>
+    body {
+      font-family:'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+    .container {
+      margin: 50px auto;
+      max-width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    input[type="email"], input[type="password"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .dashboard {
+      text-align: center;
+      color: #555;
+    }
+  </style>
+</head>
+<body ng-app="spaApp">
+  <div class="container" ng-controller="authCtrl">
+    <div ng-show="!isAuthenticated">
+      <h1>Login</h1>
+      <input type="email" placeholder="Email" ng-model="user.email">
+      <input type="password" placeholder="Password" ng-model="user.password">
+      <button ng-click="login()">Login</button>
+      <p style="color: red;" ng-if="errorMessage">{{ errorMessage }}</p>
+    </div>
+    <div ng-show="isAuthenticated">
+      <h1>Welcome to the Dashboard</h1>
+      <p class="dashboard">Hello, {{ user.email }}!</p>
+      <button ng-click="logout()">Logout</button>
+    </div>
+  </div>
+  <script>
+    angular.module('spaApp', [])
+      .controller('authCtrl', function($scope) {
+        const mockUser = { email: 'harne@gmail.com', password: '1234' };
+        $scope.isAuthenticated = false;
+        $scope.user = {};
+        $scope.errorMessage = '';
+        $scope.login = function() {
+          if (
+            $scope.user.email === mockUser.email &&
+            $scope.user.password === mockUser.password
+          ) {
+            $scope.isAuthenticated = true;
+            $scope.errorMessage = '';
+          } else {
+            $scope.errorMessage = 'Invalid email or password.';
+          }
+        };
+        $scope.logout = function() {
+          $scope.isAuthenticated = false;
+          $scope.user = {};
+        };
+      });
+  </script>
+</body>
+</html>

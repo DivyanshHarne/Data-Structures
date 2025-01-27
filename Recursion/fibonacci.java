@@ -5,7 +5,7 @@ public class fibonacci {
     }
 
     static int fibo(int n){
-        if (n == 1 || n == 0) {
+        if (n < 2) {
             return n;
         }
 

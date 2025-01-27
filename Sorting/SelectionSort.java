@@ -18,14 +18,10 @@ public class SelectionSort {
     }
     static int[] selection(int[] arr){
         //here we select max/min element of the array, putting it in correct place
-        boolean swapped;
         int l= arr.length;
         for(int i = 0; i < l; i++){
             int last  = l-i-1;
             int maxIndex = getMaxIndex(arr, 0, last);
-
-
-
 
             // int max= 0;
             // int maxIndex= 0;
